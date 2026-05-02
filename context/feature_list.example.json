@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "category": "functional",
+    "priority": "critical",
+    "description": "Example: application boots and health endpoint returns 200",
+    "steps": [
+      "Start the app with the documented dev command",
+      "GET /health returns 200 and a JSON body with status ok"
+    ],
+    "passes": false,
+    "test_file": "app/tests/test_health.py"
+  },
+  {
+    "id": 2,
+    "category": "functional",
+    "priority": "high",
+    "description": "Example: second vertical slice from your app_spec",
+    "steps": [
+      "Step users take to verify behavior",
+      "Automated test in test_file passes"
+    ],
+    "passes": false,
+    "test_file": "app/tests/test_example.py"
+  }
+]

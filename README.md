@@ -1,30 +1,46 @@
-# Agent
+# Agent workflow template
 
-Multi-session, agent-driven development workflow. Development files live in **`context/`**; application code lives in a dedicated **project folder**.
+Multi-session, agent-driven development: **`context/`** holds planning and handoff; a dedicated **project folder** holds application code (created during init).
 
-## Layout
+## Repository layout
 
-| Location | Purpose |
-|----------|---------|
-| **`context/`** | Dev docs: spec, feature list, session history, agent instructions |
-| **`app_spec.md`** | Project specification (overview, scope, tech stack) |
-| **`init.md`** | Initializer agent — Session 1 setup |
-| **`agent.md`** | Coding agent — Session N feature implementation |
-| **Project folder** | Application code, tests, project README (e.g. `app/`) |
+```
+Agent/
+├── README.md                 # This file
+├── app_spec.md               # Product spec — edit before running the Initializer (optional copy in context/)
+├── context/
+│   ├── init.md               # Initializer agent — session 1
+│   ├── agent.md              # Coding agent — sessions 2+
+│   ├── feature_list.example.json
+│   └── session_history.example.md
+└── templates/
+    └── cursor-skills/        # Optional Cursor SKILL.md templates (see templates/cursor-skills/README.md)
+```
 
-## Workflow
+After initialization you will also have:
 
-1. **Session 1 (Initializer)** — Use **`init.md`**: ensure `app_spec.md` is filled, create `context/`, `context/feature_list.json`, `context/session_history.md`, project folder, root README, then git init and first commit.
-2. **Session N (Coding)** — Use **`agent.md`**: read `context/feature_list.json` and `context/session_history.md`, pick the highest-priority feature with `passes: false`, implement it in the project folder, run tests, set `passes: true`, commit, and append to session history.
+- **`context/feature_list.json`** — backlog (only `passes` changes after creation)
+- **`context/session_history.md`** — append-only session log
+- **`<project_folder>/`** — e.g. `app/` with source and tests
 
-## Key files
+## Quick start
 
-- **`context/feature_list.json`** — Single source of truth for features (only `passes` is updated after creation).
-- **`context/session_history.md`** — Log of each session for handoff between agents.
-- **`app_spec.md`** — Update with real project details before running the Initializer.
+1. Fill **`app_spec.md`** with real overview, scope, stack, and constraints.
+2. Run an agent with **`context/init.md`** (Initializer): creates `feature_list.json`, `session_history.md`, project folder, git baseline.
+3. Run agents with **`context/agent.md`** (Coding): one prioritized feature per session, tests green, update `passes` and session history.
 
-## Getting started
+## Where to look
 
-1. Edit **`app_spec.md`** with your project name, purpose, scope, and technical context.
-2. Run the **Initializer** (follow `init.md`) to create `context/` and the project scaffold.
-3. Run **Coding** sessions (follow `agent.md`) to implement features from the feature list.
+| Need | File |
+|------|------|
+| First-time setup | `context/init.md` |
+| Ongoing implementation | `context/agent.md` |
+| Product definition | `app_spec.md` (or `context/app_spec.md`) |
+| Backlog state | `context/feature_list.json` |
+| What happened last session | `context/session_history.md` |
+| Example JSON / history shape | `context/feature_list.example.json`, `context/session_history.example.md` |
+| Optional Cursor skills | `templates/cursor-skills/` |
+
+## Copying this template
+
+Copy the repo (or these folders/files) into a new project, rename as needed, keep **`context/init.md`** and **`context/agent.md`** together with **`app_spec.md`**.

@@ -1,6 +1,6 @@
 # Project specification
 
-<!-- Update this file with project details before continuing initialization. Development files live in context/; application code lives in the project folder. See init.md and agent.md for the workflow. -->
+<!-- Fill this before running the Initializer. Workflow: context/init.md → context/feature_list.json; then context/agent.md per session. App code lives outside context/ (see context/init.md). -->
 
 ## Overview
 
